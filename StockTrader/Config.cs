@@ -21,7 +21,8 @@ namespace StockTrader
         {
             return new List<ApiResource>
             {
-               new ApiResource("tradingAppLoginAPI", "Login Api for stock trading app")
+               new ApiResource("tradingAppLoginAPI", "Login Api for stock trading app"),
+               new ApiResource("UserApi", "Admin Api For User Managements")
             };
         }
         public static IEnumerable<Client> GetClients()
@@ -67,7 +68,7 @@ namespace StockTrader
                     {
                         new Secret("adminSecret".Sha256())
                     },
-                    AllowedScopes = { "tradingAppLoginAPI" }    
+                    AllowedScopes = { "UserApi" }    
                 }
             };
         }
@@ -77,6 +78,7 @@ namespace StockTrader
             return new List<ApiScope>()
                 {
                    new ApiScope("tradingAppLoginAPI", "Login Api for stock trading app"),
+                   new ApiScope("UserApi", "Admin Api For User Managements"),
                 };
         }
     }

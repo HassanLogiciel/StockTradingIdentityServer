@@ -1,4 +1,5 @@
 using API.Data.Model;
+using IdentityServer4.AspNetIdentity;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Entities;
 using IdentityServer4.EntityFramework.Mappers;
@@ -40,7 +41,8 @@ namespace StockTrader
                 .AddOperationalStore(op =>
                 {
                     op.ConfigureDbContext = b => b.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationAssembly));
-                });
+                })
+                .AddProfileService<IdentityProfileService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,7 +68,7 @@ namespace StockTrader
 
                 foreach (var client in Config.GetClients())
                 {
-                    var clientInDb = context.Clients.Where(c => c.ClientName == client.ClientName).FirstOrDefault();
+                    var clientInDb = context.Clients.Where(c => c.ClientId == client.ClientId).FirstOrDefault();
                     var entity = client.ToEntity();
                     if (clientInDb != null)
                     {
