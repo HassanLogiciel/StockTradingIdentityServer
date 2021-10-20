@@ -29,21 +29,6 @@ namespace StockTrader
         {
             return new List<Client>()
             {
-                //Client ClientCredentials
-                //new Client
-                //{
-                //    ClientId = "client",
-                //    AllowedGrantTypes =
-                //    {
-                //        GrantType.ClientCredentials
-                //    },
-                //    ClientSecrets =
-                //    {
-                //        new Secret("secret".Sha256())
-                //    },
-                //    AllowedScopes = {"bankOfDotNetApi"}
-                //},
-                //New Resource Owner Password
                 new Client
                 {
                     ClientId = "client",
