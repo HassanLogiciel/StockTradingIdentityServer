@@ -72,9 +72,7 @@ namespace StockTrader
                     var entity = client.ToEntity();
                     if (clientInDb != null)
                     {
-                        //clientInDb.ClientSecrets = entity.ClientSecrets;
                         clientInDb.AllowedScopes = entity.AllowedScopes;
-
                     }
                     else
                     {
