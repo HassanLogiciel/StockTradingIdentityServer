@@ -41,7 +41,9 @@ namespace StockTrader
                     {
                         new Secret("secret".Sha256())
                     },
-                    AllowedScopes = { "TransactionApi", "NUserApi" }
+                    AllowedScopes = { "TransactionApi", "NUserApi" },
+                    AccessTokenLifetime = 172800
+
                 },
                 new Client
                 {
@@ -54,7 +56,8 @@ namespace StockTrader
                     {
                         new Secret("adminSecret".Sha256())
                     },
-                    AllowedScopes = { "UserApi" }    
+                    AllowedScopes = { "UserApi" },
+                    AccessTokenLifetime = 172800
                 }
             };
         }

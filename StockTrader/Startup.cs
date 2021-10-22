@@ -73,6 +73,7 @@ namespace StockTrader
                     if (clientInDb != null)
                     {
                         clientInDb.AllowedScopes = entity.AllowedScopes;
+                        clientInDb.AccessTokenLifetime = entity.AccessTokenLifetime;
                     }
                     else
                     {
