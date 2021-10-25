@@ -22,6 +22,8 @@ namespace StockTrader
             return new List<ApiResource>
             {
                new ApiResource("TransactionApi", "Transaction Api for stock trading app normal user"),
+               new ApiResource("TransactionAdminApi", "Transaction Api for stock trading app admin user"),
+               new ApiResource("NWalletApi", "Wallet Api for stock trading app normal user"),
                new ApiResource("UserApi", "User Api For Admin"),
                new ApiResource("NUserApi", "User Api For Normal User")
             };
@@ -41,7 +43,7 @@ namespace StockTrader
                     {
                         new Secret("secret".Sha256())
                     },
-                    AllowedScopes = { "TransactionApi", "NUserApi" },
+                    AllowedScopes = { "TransactionApi", "NUserApi", "NWalletApi" },
                     AccessTokenLifetime = 172800
 
                 },
@@ -56,7 +58,7 @@ namespace StockTrader
                     {
                         new Secret("adminSecret".Sha256())
                     },
-                    AllowedScopes = { "UserApi" },
+                    AllowedScopes = { "UserApi","TransactionAdminApi" },
                     AccessTokenLifetime = 172800
                 }
             };
@@ -68,7 +70,9 @@ namespace StockTrader
                 {
                    new ApiScope("TransactionApi", "Transaction Api for stock trading app normal user"),
                    new ApiScope("UserApi", "Admin Api For User Managements"),
-                   new ApiScope("NUserApi", "User Api For Normal User")
+                   new ApiScope("NUserApi", "User Api For Normal User"),
+                   new ApiScope("TransactionAdminApi", "Transaction Api for stock trading app admin user"),
+                   new ApiScope("NWalletApi", "Wallet Api for stock trading app normal user")
                 };
         }
     }

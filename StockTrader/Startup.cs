@@ -68,7 +68,9 @@ namespace StockTrader
 
                 foreach (var client in Config.GetClients())
                 {
-                    var clientInDb = context.Clients.Where(c => c.ClientId == client.ClientId).FirstOrDefault();
+                    var clientInDb = context.Clients
+                        .Include(c=>c.AllowedScopes)
+                        .Where(c => c.ClientId == client.ClientId).FirstOrDefault();
                     var entity = client.ToEntity();
                     if (clientInDb != null)
                     {
